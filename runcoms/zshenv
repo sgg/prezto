@@ -46,6 +46,7 @@ path=(
   ~/bin
   ~/Developer/android/sdk/platform-tools
   ~/Developer/android/sdk/tools
+  ~/Developer/android/arm-eabi-4.6/bin
   $path
 )
 
