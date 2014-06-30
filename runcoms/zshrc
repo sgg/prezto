@@ -11,12 +11,25 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-# alias t='tmux attach -d $1'
+
 t () {
 	if ([[ $# -eq 0 ]])
 	then
 		tmux attach -d;
 	else
-		tmux attach -d -t $1
+        case $1 in
+        "a")
+            tmux attach -d -t $2
+            ;;
+        "n")
+            tmux new -s $2
+            ;;
+        "l")
+            tmux ls
+            ;;
+        *)
+            tmux "$@"
+            ;;
+        esac
 	fi
 }
