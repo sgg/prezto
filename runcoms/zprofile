@@ -20,6 +20,8 @@ fi
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
+export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -c 'map q <ESC>:quit!<CR>' -"
+
 
 #
 # Language
@@ -43,6 +45,7 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  ~/bin
   /usr/local/{bin,sbin}
   $path
 )
