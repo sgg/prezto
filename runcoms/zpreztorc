@@ -38,6 +38,13 @@ zstyle ':prezto:load' pmodule \
   'yum' \
   'osx'
 #
+# Autosuggestions
+#
+
+# Set the query found color.
+# zstyle ':prezto:module:autosuggestions:color' found ''
+
+#
 # Editor
 #
 
@@ -124,6 +131,7 @@ zstyle ':prezto:module:prompt' theme 'gojulas'
 #   'main' \
 #   'brackets' \
 #   'pattern' \
+#   'line' \
 #   'cursor' \
 #   'root'
 #
