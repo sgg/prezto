@@ -1,8 +1,6 @@
 #
 # Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+# # Authors: #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
 # Source Prezto.
@@ -11,29 +9,37 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-t () {
-	if ([[ $# -eq 0 ]])
-	then
-		tmux attach -d;
-	else
-        case $1 in
-        "a")
-            tmux attach -d -t $2
-            ;;
-        "n")
-            tmux new -s $2
-            ;;
-        "l")
-            tmux ls
-            ;;
-        *)
-            tmux "$@"
-            ;;
-        esac
-	fi
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias tls='tmux ls'
+alias tns='tmux new-session -s'
+
+# "Incognito mode"
+i () {
+    case $1 in
+    "d")
+        if [[ -v INCOGNITO ]]; then
+            PS1="${ICOG_PS1}";
+            HISTFILE="${ICOG_HISTFILE}";
+            unset INCOGNITO
+
+        else
+            echo "Not incognito..."
+        fi
+        ;;
+    *)
+        if [[ -v INCOGNITO ]]; then
+            echo "Already incognito... Deactivate with 'i d'"
+        else
+            INCOGNITO=1
+            ICOG_HISTFILE="${HISTFILE}";
+            ICOG_PS1="${PS1}";
+            HISTFILE=;
+            PS1="%F{red}✘${PS1}";
+        fi
+    ;;
+    esac
 }
 
-i () {
-    HISTFILE=;
-    PS1="%F{red}✘${PS1}";
-}
+# Linkedin specific bits
+source "$HOME/.zlinkedin"
