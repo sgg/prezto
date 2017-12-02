@@ -41,13 +41,18 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  # Rust
+  ~/.cargo/bin
+  # Home
   ~/bin
+  # system
   $path
   /sbin
   /usr/sbin
-  #pkgsrc
+  # pkgsrc
   /usr/pkg/sbin
   /usr/pkg/bin
+  # misc
   ~/.local/bin
 )
 # Add pkgsrc manpages
