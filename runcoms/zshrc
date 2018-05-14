@@ -40,3 +40,6 @@ i () {
     ;;
     esac
 }
+
+# Source LinkedIn specific shell configuration
+test -e "${HOME}/.zlinkedin" && source "${HOME}/.zlinkedin"
